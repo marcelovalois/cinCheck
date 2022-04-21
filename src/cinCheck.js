@@ -47,7 +47,4 @@ class CinCheck {
     }
 }
 
-const random = Math.random();
-
-for (let i=0; i<1; i++)
-    CinCheck.property(CinCheck.array(CinCheck.string), data => console.log(data));
+module.exports = { CinCheck };
