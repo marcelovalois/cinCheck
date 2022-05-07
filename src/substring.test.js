@@ -2,6 +2,7 @@ const { CinCheck } = require("./cinCheck");
 
 const contains = (text, pattern) => text.indexOf(pattern) >= 0;
 const cpf = require('./geraCpf');
+const cpfIsValid = require("./verifyCpf");
 
 const cc = new CinCheck();
 
@@ -22,10 +23,10 @@ describe('properties', () => {
 
 cc.addType('cpf', cpf);
 
-describe('new types', () => {
-    test('pass new type', () => {
-        cc.property(cc.useType('cpf'), text => {
-            console.log(text);
+describe('Cpf', () => {
+    test('Should be valid cpf', () => {
+        cc.property(cc.useType('cpf'), cpf => {
+           expect(cpfIsValid(cpf)).toBe(true);
         })
     })
 })

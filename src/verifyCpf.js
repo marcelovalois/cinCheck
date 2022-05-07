@@ -33,9 +33,4 @@ const cpfIsValid = (cpf) => {
     }
 }
 
-// cpfIsValid(11297234456);
-// cpfIsValid('06788721475');
-// cpfIsValid('70605283427');
-let x = cpfIsValid('12745678911')
-console.log(x);
-// cpfIsValid(11144477735);
+module.exports = cpfIsValid;
