@@ -1,29 +1,40 @@
 class CinCheck {
-    constructor() {}
+    constructor() {
+        this.types = {};
+    }
 
-    static integer() {
+    addType(typeName, callback) {
+        this.types[typeName] = callback;
+    }
+
+    useType(typeName) {
+        const callback = this.types[typeName];
+        return callback();
+    }
+
+    integer() {
         let min = -10000;
         let max = 10000;
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    static float() {
+    float() {
         let min = -10000;
         let max = 10000;
         return Math.random() * (max - min + 1) + min;
     }
 
-    static nat() {
+    nat() {
         let min = 0;
         let max = 10000;
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    static boolean() {
+    boolean() {
         return Math.random() > 0.5 ? true : false;
     }
 
-    static string() {
+    string() {
         let randomString = '';
         let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let size = Math.floor(Math.random() * (25 - 10 + 1)) + 10;
@@ -33,7 +44,7 @@ class CinCheck {
         return randomString;
     }
 
-    static array(type) {
+    array(type) {
         const arraySize = Math.floor(Math.random() * (10 - 5 + 1)) + 5;
         const array = []
         for (let i = 0; i < arraySize; i++) {
@@ -42,7 +53,7 @@ class CinCheck {
         return array;
     }
 
-    static property() {
+    property() {
         const len = arguments.length;
         const callback = arguments[len-1];
         const args = [];
@@ -50,7 +61,6 @@ class CinCheck {
             args.push(arguments[i]);
         
         callback.apply(null, args);
-
     }
 }
 
