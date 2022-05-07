@@ -42,8 +42,15 @@ class CinCheck {
         return array;
     }
 
-    static property (num, callback) {
-        callback(num);
+    static property() {
+        const len = arguments.length;
+        const callback = arguments[len-1];
+        const args = [];
+        for (let i = 0; i < len-1; i++)
+            args.push(arguments[i]);
+        
+        callback.apply(null, args);
+
     }
 }
 
