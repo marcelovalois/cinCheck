@@ -9,7 +9,7 @@ class CinCheck {
 
     useType(typeName) {
         const callback = this.types[typeName];
-        return callback();
+        return callback;
     }
 
     integer() {
@@ -56,11 +56,13 @@ class CinCheck {
     property() {
         const len = arguments.length;
         const callback = arguments[len-1];
-        const args = [];
-        for (let i = 0; i < len-1; i++)
-            args.push(arguments[i]);
-        
-        callback.apply(null, args);
+        for (let i = 0; i < 100; i++) {
+            const args = [];
+            for (let i = 0; i < len-1; i++)
+            args.push(arguments[i]());
+            
+            callback.apply(null, args);
+        }
     }
 }
 
